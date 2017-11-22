@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 12:51:15 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 13:59:30 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/22 16:11:30 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@
 # include "libft.h"
 
 int					ft_tetridetector(char *str);
-t_list				*ft_readfile(int fd);
+struct s_tlist		*ft_readfile(int fd);
 void				ft_checkerror(char *filename);
 void				ft_perror(int *error);
 char				**ft_map(int size);
+void				ft_backtrack(struct s_tlist *lst, char **map);
+void				ft_showtab(char **tab);
+int					ft_tlstsize(struct s_tlist *lst);
 
 typedef struct		s_forms
 {
@@ -35,5 +38,12 @@ typedef struct		s_insert
 	int				form;
 	char			*tab[5];
 }					t_insert;
+
+typedef struct		s_tlist
+{
+	int				type;
+	char			id;
+	struct s_tlist	*next;
+}					t_tlist;
 
 #endif

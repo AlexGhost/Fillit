@@ -6,30 +6,87 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 15:50:34 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/19 21:22:50 by alerandy         ###   ########.fr       */
+/*   Updated: 2017/11/22 16:18:10 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
 
+int				ft_tlstsize(t_tlist *lst)
+{
+	int			count;
+	t_tlist		*curlist;
+
+	count = 0;
+	curlist = lst;
+	if (!curlist)
+		return (0);
+	while (curlist->next)
+	{
+		curlist = curlist->next;
+		count++;
+	}
+	count++;
+	return (count);
+}
+
+t_tlist			*ft_tlstnew(int n, char c)
+{
+	t_tlist *list;
+
+	list = (t_tlist*)malloc(sizeof(t_tlist));
+	if (!list)
+		return (NULL);
+	if (n > 0 && c != 0)
+	{
+		list->type = n;
+		list->id = c;
+	}
+	else
+	{
+		list->type = 0;
+		list->id = 0;
+	}
+	list->next = NULL;
+	return (list);
+}
+
+void			ft_tlsttail(t_tlist **alst, t_tlist *new_elem)
+{
+	t_tlist		*curlist;
+
+	curlist = *alst;
+	if (curlist)
+	{
+		while (curlist->next)
+			curlist = curlist->next;
+		curlist->next = new_elem;
+	}
+	else
+		*alst = new_elem;
+}
+
 /*
 ** Open filename and return the tetriminos into a list of int
 */
 
-t_list			*ft_readfile(int fd)
+t_tlist			*ft_readfile(int fd)
 {
-	t_list	*lst;
+	t_tlist	*lst;
 	char	c[21];
 	int		lastread;
 	int		r;
+	int		i;
 
-	lst = ft_lstnew(NULL, 0);
+	lst = ft_tlstnew(0, 0);
+	i = 0;
 	while ((r = read(fd, c, 21)))
 	{
 		c[20] = '\0';
-		ft_lsttail(&lst, ft_lstnew(ft_itoa(ft_tetridetector(c)), 21));
+		ft_tlsttail(&lst, ft_tlstnew(ft_tetridetector(c), 'A' + i));
 		lastread = r;
+		i++;
 	}
 	if (lastread == 21 || r != 0)
 		return (NULL);

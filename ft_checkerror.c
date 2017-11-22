@@ -6,13 +6,11 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 20:00:07 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 14:05:32 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/22 16:28:37 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft.h"
-#include "g_tetris.h"
 
 void			ft_perror(int *error)
 {
@@ -34,7 +32,8 @@ void			ft_showtab(char **tab)
 
 void			ft_checkerror(char *filename)
 {
-	t_list *lst_tetri;
+	t_tlist *lst_tetri;
+	t_tlist *tmp;
 	int		error;
 	int		fd;
 
@@ -44,16 +43,17 @@ void			ft_checkerror(char *filename)
 		lst_tetri = ft_readfile(fd);
 		if (!lst_tetri)
 			ft_perror(&error);
-		if (ft_lstsize(lst_tetri) > 26)
+		if (ft_tlstsize(lst_tetri) > 26)
 			ft_perror(&error);
-		while (lst_tetri && error == 0)
+		tmp = lst_tetri;
+		while (tmp && error == 0)
 		{
-			if (!(ft_atoi(lst_tetri->content) > 0))
+			if (tmp->type <= 0)
 				ft_perror(&error);
 			//ft_showtab(g_tetris[ft_atoi(lst_tetri->content) - 1].tab);
-			lst_tetri = lst_tetri->next;
+			tmp = tmp->next;
 		}
 		close(fd);
+		ft_backtrack(lst_tetri, ft_map(10));
 	}
-	ft_showtab(ft_map(2));
 }
