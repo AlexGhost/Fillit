@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 15:50:34 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 16:18:10 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/22 20:44:35 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,19 +76,22 @@ t_tlist			*ft_readfile(int fd)
 	t_tlist	*lst;
 	char	c[21];
 	int		lastread;
-	int		r;
+	int		buffer;
 	int		i;
 
 	lst = ft_tlstnew(0, 0);
 	i = 0;
-	while ((r = read(fd, c, 21)))
+	while ((buffer = read(fd, c, 21)))
 	{
-		c[20] = '\0';
+		if (buffer == 21)
+			c[20] = '\0';
+		else
+			c[buffer] = '\0';
 		ft_tlsttail(&lst, ft_tlstnew(ft_tetridetector(c), 'A' + i));
-		lastread = r;
+		lastread = buffer;
 		i++;
 	}
-	if (lastread == 21 || r != 0)
+	if (lastread == 21 || buffer != 0)
 		return (NULL);
 	close(fd);
 	return (lst->next);

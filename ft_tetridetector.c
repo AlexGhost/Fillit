@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/14 15:20:30 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/17 19:11:06 by alerandy         ###   ########.fr       */
+/*   Updated: 2017/11/22 20:34:20 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ static int		ft_tetri_binary(char *str)
 static int		ft_bincmp(char *str)
 {
 	int		bin;
-	int		a;
+	int		i;
 
-	a = 0;
+	i = 0;
 	bin = ft_tetri_binary(str);
-	while (g_forms[a].binary != 0)
+	while (g_forms[i].binary != 0)
 	{
-		if (bin == g_forms[a].binary)
-			return (g_forms[a].form);
-		a++;
+		if (bin == g_forms[i].binary)
+			return (g_forms[i].form);
+		i++;
 	}
 	return (0);
 }
