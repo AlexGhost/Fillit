@@ -6,7 +6,7 @@
 #    By: alerandy <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/17 14:01:58 by alerandy          #+#    #+#              #
-#    Updated: 2017/11/22 15:44:45 by acourtin         ###   ########.fr        #
+#    Updated: 2017/11/22 21:10:40 by acourtin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = fillit
 CFLAG = -Wall -Werror -Wextra
 CC = gcc
 SRC = ft_fillit.c ft_tetridetector.c ft_tetrifile.c ft_map.c ft_backtrack.c \
-	  ft_checkerror.c
+	  ft_checkerror.c ft_sqrt.c
 
 OBJ = $(SRC:.c=.o)
 

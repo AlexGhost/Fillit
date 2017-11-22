@@ -6,11 +6,27 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 20:39:27 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 12:49:17 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/22 21:10:04 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+void			ft_backtrack(t_tlist *lst)
+{
+	char	**map;
+	int		size_map;
+
+	size_map = ft_sqrt(ft_tlstsize(lst) * 4);
+	map = ft_map(size_map);
+	while (!ft_recur(lst, map, size_map))
+	{
+		ft_freemap(map, size_map);
+		size_map++;
+		map = ft_map(size_map);
+	}
+	ft_showtab(map);
+}
 
 int				main(int ac, char **av)
 {

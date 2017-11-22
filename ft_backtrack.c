@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 14:10:31 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 20:56:27 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/22 21:10:13 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,30 +122,4 @@ void			ft_freemap(char **map, int size_map)
 		i++;
 	}
 	free(map);
-}
-
-int				ft_sqrt(int n)
-{
-	int		i;
-
-	i = 2;
-	while (i * i < n)
-		i++;
-	return (i);
-}
-
-void			ft_backtrack(t_tlist *lst)
-{
-	char	**map;
-	int		size_map;
-
-	size_map = ft_sqrt(ft_tlstsize(lst) * 4);
-	map = ft_map(size_map);
-	while (!ft_recur(lst, map, size_map))
-	{
-		ft_freemap(map, size_map);
-		size_map++;
-		map = ft_map(size_map);
-	}
-	ft_showtab(map);
 }
