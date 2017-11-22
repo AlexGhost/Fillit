@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 14:10:31 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 17:29:07 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/22 18:51:55 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,37 @@
 
 int				ft_detecttetri(t_tlist *lst, int x, int y, char **map)
 {
-	int size;
-	int i;
-	int j;
-	int n;
+	int		size;
+	int		i;
+	int		j;
 
 	if (x < 0 || y < 0)
 		return (0);
 	size = 0;
 	while (map[size])
 		size++;
+	i = 0;
+	while (g_tetris[lst->type - 1].tab[i])
+	{
+		j = 0;
+		while (g_tetris[lst->type - 1].tab[i][j])
+		{
+			if (g_tetris[lst->type - 1].tab[i][j] == '#')
+				if (y + i >= size || x + j >= size || map[y + i][x + j] != '.')
+					return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+void			ft_erasetetri(t_tlist *lst, int x, int y, char **map)
+{
+	int		i;
+	int		j;
+	int		n;
+
 	i = 0;
 	n = lst->type;
 	while (g_tetris[n - 1].tab[i])
@@ -33,19 +54,11 @@ int				ft_detecttetri(t_tlist *lst, int x, int y, char **map)
 		while (g_tetris[n - 1].tab[i][j])
 		{
 			if (g_tetris[n - 1].tab[i][j] == '#')
-			{
-				if (y + j >= (size + j))
-					return (0);
-				if (x + i >= (size + i))
-					return (0);
-				if (map[y + i][x + j] != '.')
-					return (0);
-			}
+				map[y + i][x + j] = '.';
 			j++;
 		}
 		i++;
 	}
-	return (1);
 }
 
 void			ft_inserttetri(t_tlist *lst, int x, int y, char **map)
@@ -62,24 +75,77 @@ void			ft_inserttetri(t_tlist *lst, int x, int y, char **map)
 		while (g_tetris[n - 1].tab[i][j])
 		{
 			if (g_tetris[n - 1].tab[i][j] == '#')
-			{
 				map[y + i][x + j] = lst->id;
-			}
 			j++;
 		}
 		i++;
 	}
 }
 
-void			ft_backtrack(t_tlist *lst, char **map)
+int				ft_recur(t_tlist *lst, char **map, int size_map)
 {
-	ft_showtab(map);
-	ft_putchar('\n');
-	if (ft_detecttetri(lst->next, 0, 6, map))
-		ft_inserttetri(lst->next, 0, 6, map);
-	ft_putchar('\n');
-	if (ft_detecttetri(lst, 1, 6, map))
-		ft_inserttetri(lst, 1, 6, map);
-	ft_putchar('\n');
+	int		i;
+	int		x;
+	int		y;
+
+	y = 0;
+	if (!lst)
+		return (1);
+	while (y < size_map)
+	{
+		x = 0;
+		while (x < size_map)
+		{
+			if (ft_detecttetri(lst, x, y, map))
+			{
+				ft_inserttetri(lst, x, y, map);
+				if (ft_recur(lst->next, map, size_map))
+					return (1);
+				else
+					ft_erasetetri(lst, x, y, map);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+void			ft_freemap(char **map, int size_map)
+{
+	int		i;
+
+	i = 0;
+	while (i < size_map)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
+}
+
+int				ft_sqrt(int n)
+{
+	int		i;
+
+	i = 2;
+	while (i * i < n)
+		i++;
+	return (i);
+}
+
+void			ft_backtrack(t_tlist *lst)
+{
+	char	**map;
+	int		size_map;
+
+	size_map = ft_sqrt(ft_tlstsize(lst) * 4);
+	map = ft_map(size_map);
+	while (!ft_recur(lst, map, size_map))
+	{
+		ft_freemap(map, size_map);
+		size_map++;
+		map = ft_map(size_map);
+	}
 	ft_showtab(map);
 }

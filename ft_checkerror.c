@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 20:00:07 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 16:28:37 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/22 18:44:57 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void			ft_checkerror(char *filename)
 		{
 			if (tmp->type <= 0)
 				ft_perror(&error);
-			//ft_showtab(g_tetris[ft_atoi(lst_tetri->content) - 1].tab);
 			tmp = tmp->next;
 		}
 		close(fd);
-		ft_backtrack(lst_tetri, ft_map(10));
+		if (error == 0)
+			ft_backtrack(lst_tetri);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 12:51:15 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 16:11:30 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/22 18:07:46 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ struct s_tlist		*ft_readfile(int fd);
 void				ft_checkerror(char *filename);
 void				ft_perror(int *error);
 char				**ft_map(int size);
-void				ft_backtrack(struct s_tlist *lst, char **map);
+void				ft_backtrack(struct s_tlist *lst);
 void				ft_showtab(char **tab);
 int					ft_tlstsize(struct s_tlist *lst);
+struct s_tlist		*ft_tlstnew(int n, char c);
 
 typedef struct		s_forms
 {
