@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 20:00:07 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 20:38:32 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/22 21:02:34 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,23 @@ void			ft_checkerror(char *filename)
 	{
 		lst_tetri = ft_readfile(fd);
 		if (!lst_tetri)
+		{
+			//ft_putendl("read file");
 			ft_perror(&error);
+		}
 		if (ft_tlstsize(lst_tetri) > 26)
+		{
 			ft_perror(&error);
+			//ft_putendl("more than 26");
+		}
 		tmp = lst_tetri;
 		while (tmp && error == 0)
 		{
 			if (tmp->type <= 0)
+			{
+				//ft_putendl("false type");
 				ft_perror(&error);
+			}
 			tmp = tmp->next;
 		}
 		close(fd);
