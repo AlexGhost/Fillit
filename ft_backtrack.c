@@ -6,12 +6,16 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 14:10:31 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 21:10:13 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/23 13:02:52 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "g_tetris.h"
+
+/*
+**		Return 1 if the tetriminos lst can be placed on map at coord x y
+*/
 
 int				ft_detecttetri(t_tlist *lst, int x, int y, char **map)
 {
@@ -40,6 +44,10 @@ int				ft_detecttetri(t_tlist *lst, int x, int y, char **map)
 	return (1);
 }
 
+/*
+**		Write the tetriminos lst on map at coord x y
+*/
+
 void			ft_erasetetri(t_tlist *lst, int x, int y, char **map)
 {
 	int		i;
@@ -61,6 +69,10 @@ void			ft_erasetetri(t_tlist *lst, int x, int y, char **map)
 	}
 }
 
+/*
+**		Erase the tetriminos lst on map at coord x y
+*/
+
 void			ft_inserttetri(t_tlist *lst, int x, int y, char **map)
 {
 	int		i;
@@ -81,6 +93,11 @@ void			ft_inserttetri(t_tlist *lst, int x, int y, char **map)
 		i++;
 	}
 }
+
+/*
+**		Try to place all tetriminos in lst into the map of size size_map
+**		Retrun 1 if successful
+*/
 
 int				ft_recur(t_tlist *lst, char **map, int size_map)
 {
@@ -110,6 +127,10 @@ int				ft_recur(t_tlist *lst, char **map, int size_map)
 	}
 	return (0);
 }
+
+/*
+**		Free the memory for the map of size size_map
+*/
 
 void			ft_freemap(char **map, int size_map)
 {

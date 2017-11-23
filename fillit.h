@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 12:51:15 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 18:07:46 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/23 12:53:59 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void				ft_backtrack(struct s_tlist *lst);
 void				ft_showtab(char **tab);
 int					ft_tlstsize(struct s_tlist *lst);
 struct s_tlist		*ft_tlstnew(int n, char c);
+int					ft_sqrt(int n);
+int					ft_recur(struct s_tlist *lst, char **map, int size_map);
+void				ft_freemap(char **map, int size_map);
 
 typedef struct		s_forms
 {

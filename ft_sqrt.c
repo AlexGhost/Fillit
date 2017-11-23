@@ -6,11 +6,15 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 21:08:59 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 21:09:21 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/23 13:08:36 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+**		Return square root of n
+*/
 
 int				ft_sqrt(int n)
 {

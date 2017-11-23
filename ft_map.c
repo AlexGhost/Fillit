@@ -6,11 +6,15 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 13:56:28 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 14:05:12 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/23 13:07:51 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+**			Create a matrix of the size of size and fill it with .
+*/
 
 char				**ft_map(int size)
 {

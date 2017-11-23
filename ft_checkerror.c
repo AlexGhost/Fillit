@@ -6,17 +6,25 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 20:00:07 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 21:08:13 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/23 13:07:07 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+
+/*
+**		Write error and end the program
+*/
 
 void			ft_perror(int *error)
 {
 	ft_putendl("error");
 	*error = 1;
 }
+
+/*
+**		Draw the matrix tab
+*/
 
 void			ft_showtab(char **tab)
 {
@@ -29,6 +37,13 @@ void			ft_showtab(char **tab)
 		i++;
 	}
 }
+
+/*
+**			Check if there is any error in the file 
+**				if there is any invalid tetriminos
+**				if there are an invalid number of tetriminos
+**			Execute backtracking if no error detected
+*/
 
 void			ft_checkerror(char *filename)
 {

@@ -6,12 +6,16 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 15:50:34 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 21:02:11 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/23 13:11:34 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft.h"
+
+/*
+**		Return size of lst
+*/
 
 int				ft_tlstsize(t_tlist *lst)
 {
@@ -30,6 +34,10 @@ int				ft_tlstsize(t_tlist *lst)
 	count++;
 	return (count);
 }
+
+/*
+**		Return a new tlist with n for type and c for id
+*/
 
 t_tlist			*ft_tlstnew(int n, char c)
 {
@@ -51,6 +59,10 @@ t_tlist			*ft_tlstnew(int n, char c)
 	list->next = NULL;
 	return (list);
 }
+
+/*
+**		Add new_elem at the end of alst
+*/
 
 void			ft_tlsttail(t_tlist **alst, t_tlist *new_elem)
 {
