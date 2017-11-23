@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 20:39:27 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/22 21:10:04 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/23 14:05:56 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,13 @@ void			ft_backtrack(t_tlist *lst)
 int				main(int ac, char **av)
 {
 	int			error;
-	int			fd;
 
 	error = 0;
-	if (ac != 2 || (fd = open(av[1], O_RDONLY)) <= 0)
+	if (ac != 2)
+		ft_putendl("usage: ./fillit source_file");
+	else if (open(av[1], O_RDONLY) <= 0)
 		ft_perror(&error);
 	else
-	{
 		ft_checkerror(av[1]);
-	}
 	return (0);
 }

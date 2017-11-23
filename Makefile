@@ -6,7 +6,7 @@
 #    By: alerandy <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/17 14:01:58 by alerandy          #+#    #+#              #
-#    Updated: 2017/11/22 21:10:40 by acourtin         ###   ########.fr        #
+#    Updated: 2017/11/23 14:04:57 by acourtin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : submake $(OBJ)
-	@$(CC) $(OBJ) -Ilibft/ -Llibft -lft -o $(NAME)
+	@$(CC) $(CFLAG) $(OBJ) -Ilibft/ -Llibft -lft -o $(NAME)
 	@printf "\r\033[K"
 	@echo "\033[32m/------------------------------------\ \\033[0m"
 	@echo "\033[32m|----------- $(NAME) créé ------------| \\033[0m"
@@ -35,7 +35,7 @@ submake :
 
 %.o: %.c
 	@printf "\r\033[K""\033[36m - Compilation de \033[0m$<\033[0m"
-	@$(CC) -o $@ -c $< -Ilibft
+	@$(CC) $(CFLAG) -o $@ -c $< -Ilibft
 
 clean :
 	@$(MAKE) fclean -C libft/
