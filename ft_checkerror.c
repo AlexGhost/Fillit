@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 20:00:07 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/23 13:07:07 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/23 13:14:13 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void			ft_showtab(char **tab)
 }
 
 /*
-**			Check if there is any error in the file 
+**			Check if there is any error in the file
 **				if there is any invalid tetriminos
 **				if there are an invalid number of tetriminos
 **			Execute backtracking if no error detected
