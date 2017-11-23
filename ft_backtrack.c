@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 14:10:31 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/23 14:06:28 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/23 14:25:32 by acourtin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void			ft_inserttetri(t_tlist *lst, int x, int y, char **map)
 
 /*
 **		Try to place all tetriminos in lst into the map of size size_map
-**		Retrun 1 if successful
+**		Return 1 if successful
 */
 
 int				ft_recur(t_tlist *lst, char **map, int size_map)
