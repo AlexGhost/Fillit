@@ -6,7 +6,7 @@
 /*   By: acourtin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 14:10:31 by acourtin          #+#    #+#             */
-/*   Updated: 2017/11/23 14:25:32 by acourtin         ###   ########.fr       */
+/*   Updated: 2017/11/24 09:49:54 by alerandy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int				ft_detecttetri(t_tlist *lst, int x, int y, char **map)
 }
 
 /*
-**		Write the tetriminos lst on map at coord x y
+**		Erase the tetriminos lst on map at coord x y
 */
 
 void			ft_erasetetri(t_tlist *lst, int x, int y, char **map)
@@ -70,7 +70,7 @@ void			ft_erasetetri(t_tlist *lst, int x, int y, char **map)
 }
 
 /*
-**		Erase the tetriminos lst on map at coord x y
+**		Write the tetriminos lst on map at coord x y
 */
 
 void			ft_inserttetri(t_tlist *lst, int x, int y, char **map)
